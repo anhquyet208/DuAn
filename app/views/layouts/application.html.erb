@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TranAnhQuyet</title>
+    <title>DuAn</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,7 +13,6 @@
   <body id="page-top">
     <div id="wrapper">
       <%= render "layouts/sidebar" %>
-
       <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
           <%= render "layouts/navigtation"%>
@@ -21,5 +20,8 @@
         </div>
       </div>
     </div>
+     <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
   </body>
 </html>

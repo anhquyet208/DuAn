@@ -1,0 +1,23 @@
+<div class="back">
+  <div class="div-center">
+    <div class="content">
+    <% if flash[:alert] %>
+    <div class='alert alert-danger'><%= flash[:alert] %></div>
+    <% end %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <label for="exampleInputEmail1">Email address</label>
+          <p> <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", style: "border-radius: 0;", required: true   %></p>
+        </div>
+
+        <div class="field">
+          <p><%= f.label :password %></p>
+          <p><%= f.password_field :password, autocomplete: "current-password", class: "form-control", style: "border-radius: 0;", required: true %></p>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Log in", class: "btn btn-primary d-block w-100", type: "submit", style: "border-radius: 0;" %>
+        </div>
+      <% end %>
+    </div>
+  </span>
