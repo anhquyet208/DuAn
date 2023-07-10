@@ -1,7 +1,15 @@
     <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
         <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
             <ul class="navbar-nav flex-nowrap ms-auto">
-                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
-            </ul><button class="btn btn-outline-secondary btn btn-outline-secondary" type="button" style="/*font-size: 10px;*/border-style: none;"><i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i> <%= link_to("Logout", destroy_admin_user_session_path, method: :delete, data: { turbo_method: :delete }) %></button>
+                <div class="nav-item dropdown no-arrow">
+                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                <span class="badge bg-danger badge-counter">3+</span>
+                <i class="fas fa-bell fa-fw"></i></a>
+            </ul>
+            <button
+                class="btn btn-outline-secondary btn btn-outline-secondary" type="button" style="/*font-size: 10px;*/border-style: none;">
+                <i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>
+                <%= link_to("Logout", destroy_admin_user_session_path, method: :delete, data: { turbo_method: :delete }) %>
+            </button>
         </div>
     </nav>
