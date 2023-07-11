@@ -6,7 +6,7 @@
     <% end %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <label for="exampleInputEmail1">Email address</label>
+           <%= f.label :email, t('.email_address') %>
           <p> <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", style: "border-radius: 0;", required: true   %></p>
         </div>
 
