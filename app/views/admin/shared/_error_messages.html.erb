@@ -1,0 +1,22 @@
+<% if object.present? && object.errors.any? %>
+  <div id="error_explanation" data-turbo-cache="false">
+    <%# <h2>
+      <%= I18n.t("errors.messages.not_saved",
+        count: object.errors.count,
+        object: object.class.model_name.human.downcase) %>
+    <%# </h2> %>
+    <%# <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <%# <li><%= message</li> %>
+      <%# <% end %>
+    <%# </ul> %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.name.underscore.humanize.downcase %> from being saved:</h4>
+      <ul>
+        <% object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
