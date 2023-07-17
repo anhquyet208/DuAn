@@ -4,7 +4,7 @@
       <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;">Search</p>
     </div>
     <div class="card-body">
-      <%= form_for :admin_user, url: admin_admin_users_path, method: :get do |f| %>
+      <%= form_for :user, url: admin_users_path, method: :get do |f| %>
       <div class="row">
         <div class="col col-md-4">
           <div class="mb-4">
@@ -35,7 +35,7 @@
 
   <div class="card shadow">
     <div class="card-header py-3">
-      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 15px;">List Admin User</p>
+      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 15px;">List User</p>
     </div>
     <div class="card-body">
       <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
@@ -44,20 +44,20 @@
             <tr>
               <th>Name</th>
               <th>Email</th>
-              <th>Day Of Brith</th>
+              <th>Date Of Brith</th>
               <th>Tel</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <% @admin_users.each do |admin_user| %>
+            <% @users.each do |user| %>
             <tr>
-              <td><%= admin_user.name %></td>
-              <td><%= admin_user.email %></td>
-              <td><%= admin_user.date_of_brith %></td>
-              <td><%= admin_user.tel %></td>
-              <td><%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
-              <%= link_to "Delete", admin_admin_user_path(admin_user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.date_of_brith%></td>
+              <td><%= user.tel %></td>
+              <td><%= link_to "Edit", edit_admin_user_path(user) %> |
+              <%= link_to "Delete", admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
             </tr>
             <% end %>
           </tbody>

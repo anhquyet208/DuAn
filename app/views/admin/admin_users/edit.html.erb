@@ -1,0 +1,61 @@
+<div class="container container-fluid tab-content">
+  <div class="row tab-pane show active" id="basic-content">
+    <div class="col">
+      <div class="card shadow mb-3">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Edit Admin Users</p>
+        </div>
+        <div class="card-body">
+          <%= render "admin/shared/error_messages", object: @admin_user %>
+          <%= form_for [:admin, @admin_user] do |f| %>
+            <div class="row">
+          <div class="col-md-4 mb-3">
+            <%= f.label :email, class: "form-label" do %>
+              <strong>Email</strong>
+            <% end %>
+            <%= f.email_field :email, class: "form-control", placeholder: "" %>
+          </div>
+          <div class="col-md-4 mb-3">
+            <%= f.label :password, class: "form-label" do %>
+              <strong>Password</strong>
+            <% end %>
+            <%= f.password_field :password, class: "form-control", placeholder: "" %>
+          </div>
+          <div class="col-md-4 mb-3">
+            <%= f.label :date_of_brith, class: "form-label" do %>
+              <strong>Day Of Brith</strong>
+            <% end %>
+            <div class="date-select-container">
+              <%= f.date_select :date_of_brith, { class: "form-control", placeholder: "", start_year: 1900, end_year: Time.now.year }, { class: "date-select" } %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <%= f.label :rname, class: "form-label" do %>
+              <strong>Name</strong>
+            <% end %>
+            <%= f.text_field :name, class: "form-control", placeholder: "" %>
+          </div>
+          <div class="col-md-4 mb-3">
+            <%= f.label :password_confirmation, class: "form-label" do %>
+              <strong>Retype Password</strong>
+            <% end %>
+            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "" %>
+          </div>
+          <div class="col-md-4 mb-3">
+            <%= f.label :tel, class: "form-label" do %>
+              <strong>Tel</strong>
+            <% end %>
+            <%= f.text_field :tel, class: "form-control", placeholder: "" %>
+          </div>
+        </div>
+            <div class="card-footer text-center">
+              <%= f.submit "Update AdminUser", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
