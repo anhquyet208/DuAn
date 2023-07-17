@@ -44,6 +44,7 @@
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>Day Of Brith</th>
               <th>Tel</th>
               <th>Action</th>
             </tr>
@@ -53,6 +54,7 @@
             <tr>
               <td><%= admin_user.name %></td>
               <td><%= admin_user.email %></td>
+              <td><%= admin_user.date_of_brith %></td>
               <td><%= admin_user.tel %></td>
               <td><%= link_to "Edit", edit_admin_admin_user_path(admin_user) %> |
               <%= link_to "Delete", admin_admin_user_path(admin_user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>

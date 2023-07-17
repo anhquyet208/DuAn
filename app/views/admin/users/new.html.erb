@@ -24,9 +24,11 @@
 
           <div class="col-md-4 mb-3">
             <%= f.label :date_of_brith, class: "form-label" do %>
-            <strong>Day Of Brith</strong>
+              <strong>Day Of Brith</strong>
             <% end %>
-            <%= f.date_select :date_of_brith, { class: "form-control", placeholder: "", start_year: 1900, end_year: Time.now.year } %>
+            <div class="date-select-container">
+              <%= f.date_select :date_of_brith, { class: "form-control", placeholder: "", start_year: 1900, end_year: Time.now.year }, { class: "date-select" } %>
+            </div>
           </div>
         </div>
 
