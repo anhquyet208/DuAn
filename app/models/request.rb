@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Request < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

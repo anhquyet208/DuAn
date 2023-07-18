@@ -1,34 +1,35 @@
 <div class="container-fluid">
   <div class="card shadow" style="margin-bottom: 20px;">
     <div class="card-header py-3">
-      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;">Search</p>
+      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;"><%= t('.search')%></p>
     </div>
     <div class="card-body">
-      <%= form_for :admin_user, url: admin_admin_users_path, method: :get do |f| %>
-      <div class="row">
-        <div class="col col-md-4">
-          <div class="mb-4">
-            <%= f.label :name, "Name" %>
-            <%= f.text_field :name, class: "form-control" %>
+      <%= form_tag admin_admin_users_path, method: :get do %>
+        <%= hidden_field_tag :page, params[:page] %>
+        <div class="row">
+          <div class="col col-md-4">
+            <div class="mb-4">
+              <%= label_tag :name, "Name" %>
+              <%= text_field_tag :name, params[:name], class: "form-control" %>
+            </div>
+          </div>
+          <div class="col col-md-4">
+            <div class="mb-3">
+              <%= label_tag :email, "Email" %>
+              <%= text_field_tag :email, params[:email], class: "form-control" %>
+            </div>
+          </div>
+          <div class="col col-md-4">
+            <div class="mb-3">
+              <%= label_tag :tel, "Tel" %>
+              <%= text_field_tag :tel, params[:tel], class: "form-control" %>
+            </div>
           </div>
         </div>
-        <div class="col col-md-4">
-          <div class="mb-3">
-            <%= f.label :email, "Email" %>
-            <%= f.text_field :email, class: "form-control" %>
-          </div>
-        </div>
-        <div class="col col-md-4">
-          <div class="mb-3">
-            <%= f.label :tel, "Tel" %>
-            <%= f.text_field :tel, class: "form-control" %>
-          </div>
-        </div>
-      </div>
 
-      <div class="mb-3 text-center">
-        <%= f.submit "Search", class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;" %>
-      </div>
+        <div class="mb-3 text-center">
+          <%= submit_tag "Search", class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;" %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -42,11 +43,11 @@
         <table class="table my-0" id="dataTable">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Day Of Brith</th>
-              <th>Tel</th>
-              <th>Action</th>
+              <th><%= t('admin.admin_users.form.name')%></th>
+              <th><%= t("admin.admin_users.form.email")%></th>
+              <th><%= t("admin.admin_users.form.day_of_brith")%></th>
+              <th><%= t("admin.admin_users.form.tel")%></th>
+              <th><%= t(".action")%></th>
             </tr>
           </thead>
           <tbody>
@@ -63,6 +64,35 @@
           </tbody>
         </table>
       </div>
+
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+        </div>
+        <div class="col-md-6">
+          <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+            <ul class="pagination">
+              <li class="page-item <%= @admin_users.current_page == 1 ? 'disabled' : '' %>">
+                <a class="page-link" aria-label="Previous" href="?page=<%= @admin_users.current_page - 1 %>">
+                  <span aria-hidden="true">«</span>
+                </a>
+              </li>
+              <% (1..@admin_users.total_pages).each do |page| %>
+                <% if page == @admin_users.current_page %>
+                  <li class="page-item active"><span class="page-link"><%= page %></span></li>
+                <% else %>
+                  <li class="page-item"><a class="page-link" href="?page=<%= page %>"><%= page %></a></li>
+                <% end %>
+              <% end %>
+              <li class="page-item <%= @admin_users.current_page == @admin_users.total_pages ? 'disabled' : '' %>">
+                <a class="page-link" aria-label="Next" href="?page=<%= @admin_users.current_page + 1 %>">
+                  <span aria-hidden="true">»</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

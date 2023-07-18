@@ -33,35 +33,13 @@ module Admin
     end
 
     def index
-      @users = User.all
-      if params[:user].present?
-        search_params = params.require(:user).permit(:email, :tel, :name)
-
-        if search_params[:email].present?
-          @users = @users.where("email LIKE ?", "%#{search_params[:email]}%")
-        end
-
-        if search_params[:tel].present?
-          @users = @users.where("tel LIKE ?", "%#{search_params[:tel]}%")
-        end
-
-        if search_params[:name].present?
-          @users = @users.where("name LIKE ?", "%#{search_params[:name]}%")
-        end
-      end
+      @users = UserFilter.new(params).search
     end
 
     def destroy
       @user = User.find(params[:id])
       @user.destroy # Soft delete
       flash[:success] = 'User deleted'
-      redirect_to admin_users_path
-    end
-
-    def restore
-      @user = User.only_deleted.find(params[:id])
-      @user.restore # Khôi phục bản ghi đã xóa
-      flash[:success] = 'Admin User restored'
       redirect_to admin_users_path
     end
 
