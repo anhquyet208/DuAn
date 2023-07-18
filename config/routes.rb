@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :addresses
-  devise_for :request_infos
-  devise_for :requests
   devise_for :users, path: "",
     path_names: { sign_in: "login", sign_out: "logout" },
     controllers: {
@@ -16,6 +13,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :admin_users
     resources :users
-    resource :requests
+    resource :requests, only: [:new, :create, :edit]
   end
 end
