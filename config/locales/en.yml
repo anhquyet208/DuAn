@@ -43,10 +43,10 @@ en:
       du_an: DuAn
     sidebar:
       admin: ADMIN
-      new_account_admin_users: NEW ACCOUNT ADMIN USERS
+      list_users: LIST USERS
       list_admin_users: LIST ADMIN USERS
       list_requests: LIST REQUESTS
-      create_requests: CREATE REQUESTS
+      working_time: WORKING TIME
   admin:
     admin_users:
       form:

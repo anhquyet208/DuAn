@@ -2,8 +2,11 @@
     <div data-controller="showhide" data-showhide-action="change" data-showhide-show-if-value="request_type">
         <div class="row">
             <div class="col-md-4">
-                <div class="mb-3"><%= f.label :user, class: "form-label" do %><strong>User</strong><% end %>
-                    <%= f.select :user_id, User.all.map {|u| [u.name, u.id]}, {}, {class: "form-select", style: "margin-bottom: 0px;"} %>
+                <div class="mb-3">
+                <%= f.label :user, class: "form-label" do %>
+                    <strong>User</strong>
+                <% end %>
+                <%= f.select :user_id, [[current_user.name, current_user.id]], {}, {class: "form-select", style: "margin-bottom: 0px;"} %>
                 </div>
                 <div class="mb-3 ">
                     <%= f.label :request_type, class: "form-label" do %>
@@ -54,15 +57,15 @@
             </div>
             <div class="col">
             <div class="col-md-8 mb-3">
-                <div class="mb-3">
-                    <%= f.label :status, class: "form-label" do %>
-                        <strong>Status</strong>
-                    <% end %>
-                    <%= f.select :status, Request.statuses.keys.map {|s| [s.humanize, s]}, {}, class: "form-select status-select", id: "request_status" %>
-                </div>
+            <div class="mb-3">
+                <%= f.label :status, class: "form-label" do %>
+                    <strong>Status</strong>
+                <% end %>
+                <% options = { "Open" => "open" } %>
+                <%= f.select :status, options_for_select(options, "open"), {}, class: "form-select status-select", id: "request_status" %>
             </div>
             </div>
-
+            </div>
         </div>
     </div>
 <% end %>

@@ -1,18 +1,95 @@
-<div class="container container-fluid tab-content">
-  <div class="row tab-pane show active" id="basic-content">
+<div class="container">
+  <div class="row">
     <div class="col">
       <div class="card shadow mb-3">
-        <div class="card-header py-3">
-            <p class="text-primary m-0 fw-bold"><%= t(".edit_users")%></p>
+        <div>
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" role="tab" data-bs-toggle="tab" href="#edit-user-tab" aria-selected="true">EDIT USER</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link nav-working-time" role="tab" data-bs-toggle="tab" href="#working-time-tab">WORKING TIME</a>
+            </li>
+          </ul>
         </div>
-        <div class="card-body">
-          <%= render "admin/shared/error_messages", object: @user %>
-          <%= form_for [:admin, @user] do |f| %>
-            <%= render partial: 'form', locals: { f: f } %>
-            <div class="card-footer text-center">
-              <%= f.submit "Update User", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <div class="tab-pane show active" id="edit-user-tab" role="tabpanel">
+      <div class="row">
+        <div class="col-12">
+          <div class="card shadow">
+            <div class="card-body">
+              <%= render "admin/shared/error_messages", object: @user %>
+              <%= form_for [:admin, @user] do |f| %>
+                <%= render partial: 'form', locals: { f: f } %>
+                <div class="card-footer text-center">
+                  <%= f.submit "Update User", class: "btn btn-primary" %>
+                </div>
+              <% end %>
             </div>
-          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="working-time-tab" role="tabpanel" >
+      <div class="row">
+        <div class="col-12">
+          <div class="card shadow">
+            <div class="card-body">
+              <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_infor">
+                <div class="text-center mb-3" >
+                  <%= link_to '&lt;'.html_safe, { controller: 'admin/users', action: 'edit', id: @user.id, month: @previous_month, year: @previous_year }, class: 'btn btn-primary' %>
+                  <%= @date_time&.strftime('%B %Y') %>
+                  <%= link_to '&gt;'.html_safe, { controller: 'admin/users', action: 'edit', id: @user.id, month: @next_month, year: @next_year}, class: 'btn btn-primary' %>
+                </div>
+
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">DAY</th>
+                      <th scope="col">REQUEST TYPE</th>
+                      <th scope="col">WORKING TIME</th>
+                      <th scope="col">STATUS</th>
+                    </tr>
+                  </thead>
+                <tbody id="workingTimeTableBody">
+                  <% @table_data.each do |data| %>
+                    <tr>
+                      <td><%= data[:date] %></td>
+                      <% case data[:request_type] %>
+                      <% when "check_in", "check_out" %>
+                        <td><a style="color: #1cc88a;">WORKING</a></td>
+                        <td><%= data[:check_in] %> - <%= data[:check_out] %> </td>
+                      <% when "day_off" %>
+                        <td><a style="color: #e74a3b;">DAY OFF</a></td>
+                        <td><%= data[:from] %> - <%= data[:to] %></td>
+                      <% when "remote" %>
+                        <td><a style="color: #f6c23e;">REMOTE</a></td>
+                         <td> <%= data[:from] %> - <%= data[:to] %></td>
+                      <% else %>
+                        <td></td>
+                        <td></td>
+                      <% end %>
+
+                      <%case data[:status]%>
+                      <%when "canceled" %>
+                        <td> <i class="fa-solid fa-ban fa-beat-fade fa-xl" style="color: #f00000;"></i></td>
+                      <%when "open" %>
+                        <td> <i class="fa-solid fa-spinner fa-spin fa-spin-reverse fa-xl" style="color: #f3d61b;"></i></i></i> </td>
+                      <%when "approved" %>
+                        <td> <i class="fa-solid fa-circle-check fa-beat fa-xl" style="color: #1e6ff1;"></i></td>
+                      <%end%>
+                    </tr>
+                  <% end %>
+                </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
       <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;"><%= t(".new_users")%> </p>
     </div>
     <div class="card-body" style="/*margin-bottom: 20px;*/">
-      <%= render "admin/shared/error_messages", object: @admin_user %>
+      <%= render "admin/shared/error_messages", object: @user %>
         <%= form_for [:admin, @user] do |f| %>
           <%= render partial: 'form', locals: { f: f } %>
         <div class="mb-3 text-center">
@@ -16,4 +16,3 @@
     </div>
   </div>
 </div>
-<a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>

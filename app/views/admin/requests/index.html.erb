@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="card shadow" style="margin-bottom: 20px;">
+    <div class="card-header py-3">
+      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;"><%= t('.search')%></p>
+    </div>
+    <div class="card-body">
+      <%= form_tag admin_requests_path, method: :get do %>
+        <%= hidden_field_tag :page, params[:page] %>
+        <div class="row">
+          <div class="col col-md-4">
+           <div class="mb-4">
+            <%= label_tag :user_id, "User Name" %>
+            <%= select_tag "request[user_id]", options_for_select([["", nil]] + User.all.map {|u| [u.name, u.id]}), class: "form-select", style: "margin-bottom: 0px;" %>
+          </div>
+          </div>
+
+          <div class="col col-md-4">
+            <div class="mb-3">
+              <%= label_tag :request_type, "Request Type"%>
+              <%= select_tag "request[request_type]", options_for_select([["", nil]] + Request.request_types.keys.map {|rt| [rt.humanize, rt]}), class: "form-select", id: "request_request_type" %>
+            </div>
+          </div>
+         <div class="col col-md-4">
+            <div class="mb-3">
+              <%= label_tag :date_request, "Date Request" %>
+              <%= text_field_tag "request[request_infor_attributes][date_request]", params.try(:[], :request).try(:[], :request_infor_attributes).try(:[], :date_request), class: "form-control datepicker", data: { provide: 'datepicker', format: 'yyyy-mm-dd' } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 text-center">
+          <%= submit_tag "Search", class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card shadow">
+    <div class="card-header py-3">
+      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 15px;">List Request</p>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+        <table class="table my-0" id="dataTable">
+          <thead>
+            <tr>
+              <th><%= t(".name")%></th>
+              <th><%= t(".user ID")%></th>
+              <th><%= t(".request_type")%></th>
+              <th><%= t(".date request")%></th>
+              <th><%= t(".status")%></th>
+              <th><%= t(".action")%></th>
+            </tr>
+          </thead>
+          <tbody>
+           <% @requests.each do |request| %>
+            <tr>
+              <% if request.request_infor.present? && request.user.present? %>
+                <td><%= request.user.name %></td>
+                <td><%= request.user_id %></td>
+              <% else %>
+                <td>No user information provided</td>
+                <td></td>
+              <% end %>
+              <td><%= request.request_type %></td>
+              <% if request.request_infor.present? && request.request_infor.date_request.present? %>
+                <td><%= request.request_infor.date_request.strftime("%Y/%m/%d") %></td>
+              <% else %>
+                <td>No date provided</td>
+              <% end %>
+              <td><%= request.status %></td>
+              <td><%= link_to edit_admin_request_path(request) do %><i class="fa-solid fa-pen-to-square" style="color: #24abff;"></i><% end %>  |
+              <%= link_to admin_request_path(request), data: { method: :delete, confirm: "Are you sure?" } do %><i class="fa-solid fa-trash-can" style="color: #f34444;"></i><% end %>
+              </td>
+            </tr>
+          <% end %>
+
+          </tbody>
+        </table>
+        <div class="mb-3 text-center">
+          <%= link_to "Create", new_admin_request_path, class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+        </div>
+        <div class="col-md-6">
+          <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+            <%= will_paginate @clients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

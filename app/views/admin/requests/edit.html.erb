@@ -1,0 +1,20 @@
+<div class="container container-fluid tab-content">
+    <div class="row tab-pane show active" id="basic-content">
+        <div class="col">
+            <div class="card shadow mb-3">
+                <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">Edit Requests</p>
+                </div>
+                <div class="card-body">
+                  <%= render "admin/shared/error_messages", object: @request %>
+                    <%= form_for [:admin,@request] do |f| %>
+                      <%= render partial: 'form', locals: { f: f } %>
+                  <div class="mb-3 text-center">
+                  <%= f.submit "Edit Request",type: "submit", class: "btn btn-primary" %>
+                  </div>
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

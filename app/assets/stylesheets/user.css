@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
+@import url('lib/bootstrap.min.css');
+@import url("custom.css");
+* {
+  transition: color .4s, background .4s, border .4s;
+  transition-timing-function: ease-in;
+}
+
+body {
+  background: #F9FBE7;
+}
+body.dark {
+  background: #242236;
+}
+.containerr {
+  display: flex;
+  height: 100vh;
+}
+.clock {
+  position: relative;
+  margin: auto;
+  width: 100px;
+  height: 260px;
+}
+.box {
+  color: #7986CB;
+  background: #EDE7F6;
+  font-size: 20px;
+  text-align: center;
+  font-family: Lato, sans-serif;
+  border: 2px solid #D1C4E9;
+  border-radius: 4px;
+}
+.dark .box {
+  color: #90CAF9;
+  background: #4527A0;
+  border: 2px solid #673AB7;
+}
+.date {
+  width: 120px;
+  padding: 5px 8px;
+  position: absolute;
+  top: -260px;
+  left: 6px;
+}
+.clock-face {
+  position: absolute;
+  top: 195px ;
+  left: 581px ;
+  height: 220px;
+  width: 220px;
+  background: #EDE7F6;
+  border-radius: 50%;
+  border: 4px solid #D1C4E9;
+}
+.dark .clock-face {
+  background: #4527A0;
+  border: 4px solid #673AB7;
+}
+.marker {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #7986CB;
+  border-radius: 50%;
+}
+.dark .marker {
+  background: #90CAF9;
+}
+.twelve {
+  left: 105px;
+  top: 8px;
+}
+.three {
+  right: 8px;
+  top: 105px;
+}
+.six {
+  left: 105px;
+  bottom: 8px;
+}
+.nine {
+  left: 8px;
+  top: 105px;
+}
+.hand {
+  position: absolute;
+  left: 110px;
+  transform-origin: 0%;
+  border-radius: 0 50% 50% 0;
+}
+.hour-hand {
+  height: 8px;
+  width: 62px;
+  top: 107px;
+  background: #F06292;
+}
+.dark .hour-hand {
+  background: #E91E63;
+}
+.minute-hand {
+  height: 6px;
+  width: 88px;
+  top: 108px;
+  background: #FF8A65;
+}
+.dark .minute-hand {
+  background: #FF9800;
+}
+.second-hand {
+  height: 3px;
+  width: 98px;
+  top: 109px;
+  background: #777;
+  transition: transform 0.15s ease-out;
+}
+.dark .second-hand {
+  background: #eee
+}
+.centre {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #777;
+  border-radius: 50%;
+  top: 102px;
+  left: 102px;
+}
+.dark .centre {
+  background: #eee
+}
+.digital-time {
+  width: 90px;
+  padding: 5px 8px;
+  position: absolute;
+  top: 250px;
+  left: 61px;
+}
+.dark .digital-time {
+  color: #90CAF9;
+  background: #4527A0;
+  border: 2px solid #673AB7;
+}
+
+.switch-label {
+  color: #7986CB;
+  padding-right: 6px;
+  line-height: 1.6em;
+  font-family: Lato, sans-serif;
+  font-size: 0.9em;
+}
+.dark .switch-label {
+  color: #90CAF9;
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #aaa;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #90CAF9;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+/* Rounded sliders */
+.slider.round {
+  border-radius: 8px;
+}
+
+.slider.round:before {
+  border-radius: 5px;
+}
+
+.checkin_out {
+  width: 120px;
+  padding: 5px 8px;
+  position: absolute;
+  top: 500px;
+  left: 640px;
+}
+
+.request-links {
+  width: 300px;
+  padding: 5px 8px;
+  position: absolute;
+  top: 550px;
+  left: 560px;
+}
+
+.new-request {
+  top: 190px;
+  position: absolute;
+  left: 3px;
+}

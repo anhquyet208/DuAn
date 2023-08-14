@@ -21,6 +21,5 @@ class AdminUserFilter
     end
 
     admin_users.paginate(page: params[:page], per_page: 3)
-
   end
 end
