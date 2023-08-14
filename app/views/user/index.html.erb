@@ -1,0 +1,56 @@
+<nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+        <ul class="navbar-nav flex-nowrap ms-auto">
+            <div class="nav-item dropdown no-arrow">
+
+            <i class="fas fa-bell fa-fw"></i></a>
+        </ul>
+        <button
+            class="btn btn-outline-secondary btn btn-outline-secondary" type="button" style="/*font-size: 10px;*/border-style: none;">
+            <i class="fas fa-sign-out-alt" style="padding-right: 5px;"></i>
+            <%= link_to(t('.log_out'), destroy_user_session_path, method: :delete, data: { method: :delete }) %>
+        </button>
+    </div>
+</nav>
+
+<body>
+	<div class="containerr">
+		<div class="clock-face">
+			<div class="marker twelve"></div>
+			<div class="marker three"></div>
+			<div class="marker six"></div>
+			<div class="marker nine"></div>
+			<div id="minute-hand" class="hand minute-hand"></div>
+			<div id="hour-hand" class="hand hour-hand"></div>
+			<div id="second-hand" class="hand second-hand"></div>
+			<div id="centre" class="centre"></div>
+			<div id="digital-time" class="digital-time box"></div>
+		</div>
+
+		<div class="clock">
+			<div id="date" class="date box"></div>
+		</div>
+
+		<span class="switch-label">Dark mode</span>
+		<label class="switch">
+			<input id="dark-mode-toggle" type="checkbox">
+			<span class="slider round"></span>
+		</label>
+
+	<div id="checkin_checkout" class="checkin_out">
+		<% if params[:check_in]  %>
+			<%= button_to user_check_out_path(current_user) , method: :post, class: "btn btn-danger", id: "checkin_out_button" do %>
+				Check Out
+			<% end %>
+		<% else %>
+			<%= button_to user_check_in_path(current_user), method: :post, class: "btn btn-success", id: "checkin_out_button" do %>
+				Check In
+			<% end %>
+		<% end %>
+	</div>
+		<div class="request-links">
+			<%= link_to "List Request", user_requests_path, class: "btn btn-primary", style: "display: inline-block;" %> |
+			<%= link_to "Create Request", new_user_request_path, class: "btn btn-primary", style: "display: inline-block;" %>
+		</div>
+	</div>
+</body>

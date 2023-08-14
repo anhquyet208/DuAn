@@ -13,5 +13,13 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :admin_users
     resources :users
+    resources :requests
+  end
+
+  get "/user", to: "user#index"
+  namespace :user do
+    resources :requests
+    post 'check_in'
+    post 'check_out'
   end
 end

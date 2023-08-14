@@ -4,31 +4,32 @@
       <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;">Search</p>
     </div>
     <div class="card-body">
-      <%= form_for :user, url: admin_users_path, method: :get do |f| %>
-      <div class="row">
-        <div class="col col-md-4">
-          <div class="mb-4">
-            <%= f.label :name, "Name" %>
-            <%= f.text_field :name, class: "form-control" %>
+      <%= form_tag admin_users_path, method: :get do %>
+        <%= hidden_field_tag :page, params[:page] %>
+        <div class="row">
+          <div class="col col-md-4">
+            <div class="mb-4">
+              <%= label_tag :name, "Name" %>
+              <%= text_field_tag :name, nil, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col col-md-4">
+            <div class="mb-3">
+              <%= label_tag :email, "Email" %>
+              <%= text_field_tag :email, nil, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col col-md-4">
+            <div class="mb-3">
+              <%= label_tag :tel, "Tel" %>
+              <%= text_field_tag :tel, nil, class: "form-control" %>
+            </div>
           </div>
         </div>
-        <div class="col col-md-4">
-          <div class="mb-3">
-            <%= f.label :email, "Email" %>
-            <%= f.text_field :email, class: "form-control" %>
-          </div>
-        </div>
-        <div class="col col-md-4">
-          <div class="mb-3">
-            <%= f.label :tel, "Tel" %>
-            <%= f.text_field :tel, class: "form-control" %>
-          </div>
-        </div>
-      </div>
 
-      <div class="mb-3 text-center">
-        <%= f.submit "Search", class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;" %>
-      </div>
+        <div class="mb-3 text-center">
+          <%= submit_tag "Search", class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;" %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -42,11 +43,11 @@
         <table class="table my-0" id="dataTable">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Date Of Brith</th>
-              <th>Tel</th>
-              <th>Action</th>
+              <th><%= t('admin.admin_users.form.name')%></th>
+              <th><%= t("admin.admin_users.form.email")%></th>
+              <th><%= t("admin.admin_users.form.day_of_brith")%></th>
+              <th><%= t("admin.admin_users.form.tel")%></th>
+              <th><%= t("admin.admin_users.index.action")%></th>
             </tr>
           </thead>
           <tbody>
@@ -56,13 +57,27 @@
               <td><%= user.email %></td>
               <td><%= user.date_of_brith%></td>
               <td><%= user.tel %></td>
-              <td><%= link_to "Edit", edit_admin_user_path(user) %> |
-              <%= link_to "Delete", admin_user_path(user), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+              <td><%= link_to edit_admin_user_path(user) do %><i class="fa-solid fa-pen-to-square" style="color: #24abff;"></i><% end %> |
+              <%= link_to admin_user_path(user), data: { method: :delete, confirm: "Are you sure?" } do %><i class="fa-solid fa-trash-can" style="color: #f34444;"></i><% end %>
             </tr>
             <% end %>
           </tbody>
         </table>
+        <div class="mb-3 text-center">
+          <%= link_to "Create", new_admin_user_path, class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;" %>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-6 align-self-center">
+        </div>
+        <div class="col-md-6">
+          <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+            <%= will_paginate @clients, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+          </nav>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

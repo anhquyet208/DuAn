@@ -34,13 +34,40 @@ en:
     sessions:
     new:
       email_address: "Email address"
-
   layouts:
     navigtation:
       log_out: "Logout"
-
     application:
       du_an: DuAn
-
     devise:
       du_an: DuAn
+    sidebar:
+      admin: ADMIN
+      list_users: LIST USERS
+      list_admin_users: LIST ADMIN USERS
+      list_requests: LIST REQUESTS
+      working_time: WORKING TIME
+  admin:
+    admin_users:
+      form:
+        email: Email
+        password: PassWord
+        day_of_brith: Day Of Brith
+        name: Name
+        retype_password: Retype PassWord
+        tel: Tel
+      index:
+        action: Action
+        search: Search
+      edit:
+        edit_admin_users: Edit Admin Users
+      new:
+       new_admin_users: New Admin Users
+
+    users:
+      new:
+        new_users: New Users
+      edit:
+        edit_users: Edit Users
+
+

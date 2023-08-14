@@ -1,32 +1,27 @@
-<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 progress-page">
+<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 progress-page ">
+
     <div class="container-fluid d-flex flex-column p-0">
         <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-            <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
-            <div class="sidebar-brand-text mx-3"><span>ADMIN</span></div>
+            <div class="sidebar-brand-icon"><i class="fa-solid fa-circle-user"></i></div>
+            <div class="sidebar-brand-text mx-3"><span><%= t(".admin")%></span></div>
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
             <li class="nav-item">
-                <a class="nav-link" href="/admin/admin_users/new">
-                    <i class="fas fa-tachometer-alt"></i><span>NEW ACCOUNT ADMIN USERS</span>
+                <a class="nav-link" href="/admin/users">
+                    <i class="fa-solid fa-users"></i><span><%= t(".list_users")%></span>
                 </a>
             </li>
 
-    
             <li class="nav-item">
                 <a class="nav-link" href="/admin/admin_users">
-                    <i class="far fa-list-alt"></i><span>LIST ADMIN USERS</span>
+                    <i class="fa-solid fa-users-line"></i></i><span><%= t(".list_admin_users")%></span>
                 </a>
-                <a class="nav-link" href="/admin/users/index.html">
-                    <i class="fas fa-user"></i><span>LIST REQUESTS</span>
+                <a class="nav-link" href="/admin/requests">
+                    <i class="fa-solid fa-list"></i><span><%= t(".list_requests")%></span>
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/user_import_histories.html">
-                    <i class="fas fa-boxes"></i><span>CREATE REQUESTS</span>
-                </a>
-            </li>
         </ul>
     </div>
 </nav>

@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-4 mb-3">
+    <%= f.label :email, class: "form-label" do %>
+      <strong><%= t(".email")%></strong>
+    <% end %>
+    <%= f.email_field :email, class: "form-control", placeholder: "" %>
+  </div>
+  <div class="col-md-4 mb-3">
+    <%= f.label :password, class: "form-label" do %>
+      <strong><%= t(".password")%></strong>
+    <% end %>
+    <%= f.password_field :password, class: "form-control", placeholder: "" %>
+  </div>
+  <div class="col-md-4 mb-3">
+    <%= f.label :date_of_brith, class: "form-label" do %>
+      <strong><%= t(".day_of_brith")%></strong>
+    <% end %>
+    <div class="date-select-container">
+      <%= f.date_select :date_of_brith, { class: "form-control", placeholder: "", start_year: 1900, end_year: Time.now.year }, { class: "date-select" } %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 mb-3">
+    <%= f.label :name, class: "form-label" do %>
+      <strong><%= t(".name")%></strong>
+    <% end %>
+    <%= f.text_field :name, class: "form-control", placeholder: "" %>
+  </div>
+  <div class="col-md-4 mb-3">
+    <%= f.label :password_confirmation, class: "form-label" do %>
+      <strong><%= t(".retype_password")%></strong>
+    <% end %>
+    <%= f.password_field :password_confirmation, class: "form-control", placeholder: "" %>
+  </div>
+  <div class="col-md-4 mb-3">
+    <%= f.label :tel, class: "form-label" do %>
+      <strong><%= t(".tel")%></strong>
+    <% end %>
+    <%= f.text_field :tel, class: "form-control", placeholder: "" %>
+  </div>
+</div>

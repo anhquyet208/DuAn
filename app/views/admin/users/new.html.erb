@@ -3,55 +3,12 @@
   <h3 class="text-dark mb-4"></h3>
   <div class="card shadow" style="margin-bottom: 20px;">
     <div class="card-header py-3">
-      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;">New Users</p>
+      <p class="text-primary m-0 fw-bold" style="float: left;padding-top: 7px;"><%= t(".new_users")%> </p>
     </div>
     <div class="card-body" style="/*margin-bottom: 20px;*/">
-      <%= render "admin/shared/error_messages", object: @admin_user %>
-      <%= form_for [:admin, @user] do |f| %>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <%= f.label :email, class: "form-label" do %>
-              <strong>Email</strong>
-            <% end %>
-            <%= f.email_field :email, class: "form-control", placeholder: "" %>
-          </div>
-          <div class="col-md-4 mb-3">
-            <%= f.label :password, class: "form-label" do %>
-              <strong>Password</strong>
-            <% end %>
-            <%= f.password_field :password, class: "form-control", placeholder: "" %>
-          </div>
-
-          <div class="col-md-4 mb-3">
-            <%= f.label :date_of_brith, class: "form-label" do %>
-              <strong>Day Of Brith</strong>
-            <% end %>
-            <div class="date-select-container">
-              <%= f.date_select :date_of_brith, { class: "form-control", placeholder: "", start_year: 1900, end_year: Time.now.year }, { class: "date-select" } %>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <%= f.label :rname, class: "form-label" do %>
-              <strong>Name</strong>
-            <% end %>
-            <%= f.text_field :name, class: "form-control", placeholder: "" %>
-          </div>
-          <div class="col-md-4 mb-3">
-            <%= f.label :password_confirmation, class: "form-label" do %>
-              <strong>Retype Password</strong>
-            <% end %>
-            <%= f.password_field :password_confirmation, class: "form-control", placeholder: "" %>
-          </div>
-          <div class="col-md-4 mb-3">
-            <%= f.label :tel, class: "form-label" do %>
-              <strong>Tel</strong>
-            <% end %>
-            <%= f.text_field :tel, class: "form-control", placeholder: "" %>
-          </div>
-        </div>
+      <%= render "admin/shared/error_messages", object: @user %>
+        <%= form_for [:admin, @user] do |f| %>
+          <%= render partial: 'form', locals: { f: f } %>
         <div class="mb-3 text-center">
           <%= f.submit "Create User", class: "btn btn-primary btn-sm text-center", style: "text-align: center;margin-top: 20px;"%>
         </div>
@@ -59,4 +16,3 @@
     </div>
   </div>
 </div>
-<a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>

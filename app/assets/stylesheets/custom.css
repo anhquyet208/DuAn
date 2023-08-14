@@ -46,10 +46,5 @@ div.content {
 }
 
 .date-of-brith-label {
-  display: block; /* Hiển thị nhãn "Day Of Brith" trên một dòng */
-}
-
-.date-select {
-  display: inline-block; /* Hiển thị các phần tử select trên cùng một dòng */
-  margin-top: 0.5rem; /* Khoảng cách giữa nhãn và lựa chọn ngày/tháng/năm */
+  display: block;
 }
